@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BirthdayVerse | A Magical Birthday Experience</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- html2canvas CDN for Card Download -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Animated Particle & Decoration Background -->
+  <canvas id="fireworksCanvas"></canvas>
+  <div class="floating-decorations" id="floatingDecorations"></div>
+
+  <!-- Main Container -->
+  <div class="app-container">
+
+    <!-- Top Navigation Controls -->
+    <header class="top-nav">
+      <div class="logo">
+        <span class="sparkle-icon">✨</span> BirthdayVerse
+      </div>
+      <div class="nav-actions">
+        <!-- Music Toggle -->
+        <button id="musicToggleBtn" class="nav-btn" aria-label="Toggle Music" title="Toggle Music">
+          <span class="btn-icon">🎵</span>
+          <span class="btn-text">Music</span>
+        </button>
+
+        <!-- Theme Toggle -->
+        <button id="themeToggleBtn" class="nav-btn" aria-label="Toggle Theme" title="Toggle Dark/Light Mode">
+          <span class="btn-icon" id="themeIcon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-badge" id="countdownBadge">
+        <span class="pulse-dot"></span> <span id="countdownText">Calculating date...</span>
+      </div>
+      
+      <h1 class="hero-title">
+        <span id="typewriter"></span><span class="cursor">|</span>
+      </h1>
+      <p class="hero-subtitle" id="heroSubtitle">A special celebration handcrafted just for you ✨</p>
+    </section>
+
+    <!-- Main Content Grid -->
+    <main class="interactive-grid">
+
+      <!-- Interactive Birthday Cake Card -->
+      <section class="glass-card cake-card">
+        <div class="card-header">
+          <h2>Blow Out The Candles! 🕯️</h2>
+          <p>Tap the candle flames to make a birthday wish</p>
+        </div>
+
+        <div class="cake-container" id="cakeContainer">
+          <div class="cake">
+            <!-- Candle Layer -->
+            <div class="candles">
+              <div class="candle" data-candle="1">
+                <div class="flame"></div>
+              </div>
+              <div class="candle" data-candle="2">
+                <div class="flame"></div>
+              </div>
+              <div class="candle" data-candle="3">
+                <div class="flame"></div>
+              </div>
+            </div>
+            <!-- Cake Layers -->
+            <div class="layer layer-top">
+              <div class="icing"></div>
+            </div>
+            <div class="layer layer-middle"></div>
+            <div class="layer layer-bottom"></div>
+            <div class="plate"></div>
+          </div>
+        </div>
+
+        <div class="cake-status" id="cakeStatus">
+          Click the flames to blow them out!
+        </div>
+      </section>
+
+      <!-- Interactive Gift Box Card -->
+      <section class="glass-card gift-card">
+        <div class="card-header">
+          <h2>Your Mystery Gift 🎁</h2>
+          <p>Tap the gift box to unlock your birthday letter & surprise</p>
+        </div>
+
+        <div class="gift-container" id="giftContainer">
+          <div class="gift-box" id="giftBox">
+            <div class="gift-lid">
+              <div class="bow"></div>
+            </div>
+            <div class="gift-body">
+              <div class="ribbon-v"></div>
+              <div class="ribbon-h"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="gift-status" id="giftStatus">
+          Tap the gift box to open!
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Heartfelt Birthday Letter Section (Revealed after opening gift) -->
+    <section class="glass-card letter-card locked" id="letterCard">
+      <div class="letter-badge">💌 Personalized Message</div>
+      
+      <div class="letter-content" id="printableCard">
+        <div class="letter-header">
+          <h2 id="letterGreeting">Dearest Friend,</h2>
+          <span class="letter-date" id="letterDate">Special Day</span>
+        </div>
+        
+        <hr class="letter-divider">
+
+        <div class="letter-body" id="letterMessage">
+          <!-- Filled dynamically from birthdayConfig -->
+        </div>
+
+        <div class="letter-footer">
+          <p>With warm love & wishes,</p>
+          <h3 id="letterSender">Your Bestie</h3>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="card-actions">
+        <button id="downloadBtn" class="action-btn primary-btn">
+          <span>📸</span> Save Card as Image
+        </button>
+        <button id="shareBtn" class="action-btn secondary-btn">
+          <span>🔗</span> Share Celebration
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>Crafted with ❤️ for <span id="footerName">you</span> • Powered by BirthdayVerse</p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
